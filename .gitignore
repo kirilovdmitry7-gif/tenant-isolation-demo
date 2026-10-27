@@ -4,4 +4,6 @@ node_modules
 .env.local
 *.tsbuildinfo
 next-env.d.ts
+
+# Local notes, not part of the work sample
 PUBLISH.md
