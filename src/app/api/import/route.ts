@@ -19,6 +19,17 @@ const DEMO_ORG = "11111111-1111-1111-1111-111111111111";
  * before it is written.
  */
 export async function POST() {
+  try {
+    return await run();
+  } catch (e) {
+    return NextResponse.json(
+      { error: e instanceof Error ? e.message : "unexpected server error" },
+      { status: 500 }
+    );
+  }
+}
+
+async function run() {
   const db = supabaseAdmin();
   const items = sampleFeed();
 

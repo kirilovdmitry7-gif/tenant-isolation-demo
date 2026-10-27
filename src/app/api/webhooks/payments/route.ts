@@ -17,6 +17,17 @@ export const dynamic = "force-dynamic";
  * learns it. Skipping step 3 means a provider retry grants access twice.
  */
 export async function POST(req: Request) {
+  try {
+    return await run(req);
+  } catch (e) {
+    return NextResponse.json(
+      { accepted: false, reason: e instanceof Error ? e.message : "unexpected server error" },
+      { status: 500 }
+    );
+  }
+}
+
+async function run(req: Request) {
   const raw = await req.text();
   const secret = process.env.PAYMENT_WEBHOOK_SECRET;
   if (!secret) {

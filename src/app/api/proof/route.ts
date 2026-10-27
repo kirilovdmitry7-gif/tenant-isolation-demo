@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { supabaseAdmin } from "@/lib/supabase/admin";
+import { supabaseAdmin, publicSupabaseConfig } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
 
@@ -38,6 +38,19 @@ const TARGETS: Record<string, { label: string; org: string }> = {
  * coming from the database, not from the page.
  */
 export async function POST(req: Request) {
+  try {
+    return await run(req);
+  } catch (e) {
+    // Any failure answers in JSON. A page that cannot explain its own
+    // breakage is worse than one that breaks loudly.
+    return NextResponse.json(
+      { error: e instanceof Error ? e.message : "unexpected server error" },
+      { status: 500 }
+    );
+  }
+}
+
+async function run(req: Request) {
   const { identity, target } = (await req.json()) as {
     identity: string;
     target: string;
@@ -51,11 +64,10 @@ export async function POST(req: Request) {
 
   const sql = `select id, name, status from projects where org_id = '${what.org}'`;
 
-  const asUser = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { auth: { persistSession: false } }
-  );
+  const pub = publicSupabaseConfig();
+  const asUser = createClient(pub.url, pub.key, {
+    auth: { persistSession: false },
+  });
 
   const { error: signInError } = await asUser.auth.signInWithPassword({
     email: who.email,
