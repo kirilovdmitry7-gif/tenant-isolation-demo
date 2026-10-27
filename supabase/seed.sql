@@ -7,8 +7,8 @@ insert into public.orgs (id, name) values
 on conflict (id) do nothing;
 
 insert into public.projects (id, org_id, name, status) values
-  ('aaaaaaa1-0000-0000-0000-000000000001','11111111-1111-1111-1111-111111111111','Brand film — autumn cut','in_review'),
-  ('aaaaaaa1-0000-0000-0000-000000000002','11111111-1111-1111-1111-111111111111','Product demo — v3','delivered'),
+  ('aaaaaaa1-0000-0000-0000-000000000001','11111111-1111-1111-1111-111111111111','Brand film - autumn cut','in_review'),
+  ('aaaaaaa1-0000-0000-0000-000000000002','11111111-1111-1111-1111-111111111111','Product demo - v3','delivered'),
   ('bbbbbbb2-0000-0000-0000-000000000001','22222222-2222-2222-2222-222222222222','Loyalty launch spot','in_progress'),
   ('bbbbbbb2-0000-0000-0000-000000000002','22222222-2222-2222-2222-222222222222','Store opening reel','delivered')
 on conflict (id) do nothing;

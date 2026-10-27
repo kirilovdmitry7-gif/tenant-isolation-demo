@@ -86,7 +86,7 @@ export default function PortalPage() {
 
       <Panel
         title="Signed webhook"
-        blurb="Three deliveries: one correctly signed, one with a tampered signature, and a replay of a delivery already seen. Only the first one does anything."
+        blurb="Three cases: a correctly signed delivery, one with a tampered signature, and the same delivery sent twice. Only a valid, unseen delivery does anything."
       >
         <div className="flex flex-wrap gap-2">
           {(["valid", "forged", "replay"] as const).map((m) => (
@@ -97,7 +97,7 @@ export default function PortalPage() {
               className="rounded-md border px-3 py-2 text-sm font-medium disabled:opacity-50"
               style={{ borderColor: "var(--line)" }}
             >
-              {m === "valid" ? "Send signed" : m === "forged" ? "Send forged" : "Replay the last one"}
+              {m === "valid" ? "Send signed" : m === "forged" ? "Send forged" : "Send the same one twice"}
             </button>
           ))}
         </div>
