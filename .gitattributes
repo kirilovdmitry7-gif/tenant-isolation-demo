@@ -1,0 +1,5 @@
+# Keep line endings sane across Windows and Linux.
+# Shell scripts in particular must stay LF: a CRLF shebang makes Linux
+# answer "bad interpreter" and the hook silently never runs.
+* text=auto eol=lf
+*.sh text eol=lf
