@@ -7,3 +7,4 @@ next-env.d.ts
 
 # Local notes, not part of the work sample
 PUBLISH.md
+supabase/check.sql
