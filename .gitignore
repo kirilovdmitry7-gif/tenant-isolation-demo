@@ -5,6 +5,7 @@ node_modules
 *.tsbuildinfo
 next-env.d.ts
 
-# Local notes, not part of the work sample
+# Local notes and configuration, never part of the work sample
 PUBLISH.md
+VERCEL-ENV.txt
 supabase/check.sql
