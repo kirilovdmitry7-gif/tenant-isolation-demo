@@ -18,10 +18,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               Tenant Isolation Demo
             </Link>
             <Link href="/proof" className="opacity-70 hover:opacity-100">
-              Isolation proof
+              Try to break in
             </Link>
             <Link href="/portal" className="opacity-70 hover:opacity-100">
-              Pipelines
+              Imports &amp; payments
             </Link>
           </nav>
         </header>
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           className="mx-auto max-w-4xl px-4 py-10 text-xs"
           style={{ color: "var(--muted)" }}
         >
-          Demo data only. No real customers, no production systems.
+          A work sample with invented data. No real customers and no production systems are involved.
         </footer>
       </body>
     </html>

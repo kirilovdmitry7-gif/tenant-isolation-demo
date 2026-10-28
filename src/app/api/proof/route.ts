@@ -101,6 +101,7 @@ async function run(req: Request) {
       error: userQuery.error?.message ?? null,
     },
     asServiceRole: {
+      rows: adminQuery.data ?? [],
       count: adminQuery.data?.length ?? 0,
       error: adminQuery.error?.message ?? null,
     },
